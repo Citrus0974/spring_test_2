@@ -1,6 +1,7 @@
 package edu.springtest2.beans.configs;
 
 
+import edu.springtest2.objects.university.Human;
 import edu.springtest2.objects.university.Review;
 import edu.springtest2.objects.university.Student;
 import org.springframework.beans.factory.BeanCreationException;
@@ -91,4 +92,7 @@ public class FirstConfig {
     public Student student1(){
         return new Student("dan", range(), 4, 4);
     }
+
+    @Bean
+    public Human human1(){return new Human();}
 }
