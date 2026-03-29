@@ -1,4 +1,4 @@
-package edu.springtest2.beans;
+package edu.springtest2.entities;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;

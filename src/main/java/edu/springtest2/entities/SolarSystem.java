@@ -1,4 +1,4 @@
-package edu.springtest2.beans;
+package edu.springtest2.entities;
 
 import java.util.ArrayList;
 import java.util.List;

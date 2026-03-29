@@ -1,8 +1,8 @@
 package edu.springtest2.beans.configs;
 
-import edu.springtest2.beans.Planet;
-import edu.springtest2.beans.SolarSystem;
-import edu.springtest2.beans.Star;
+import edu.springtest2.entities.Planet;
+import edu.springtest2.entities.SolarSystem;
+import edu.springtest2.entities.Star;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

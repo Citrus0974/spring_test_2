@@ -1,20 +1,17 @@
 package edu.springtest2;
 
 
-import edu.springtest2.beans.SolarSystem;
-import edu.springtest2.beans.Star;
-import edu.springtest2.beans.configs.Config;
-import org.springframework.beans.factory.BeanFactory;
+import edu.springtest2.entities.SolarSystem;
+import edu.springtest2.entities.Star;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Bean;
 
 import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
         System.out.print("Hello and welcome!");
-        ApplicationContext app = new AnnotationConfigApplicationContext("edu.springtest2.beans.configs");
+        ApplicationContext app = new AnnotationConfigApplicationContext("edu.springtest2.beans");
         System.out.println(app.getBean("sun"));
         System.out.println(app.getBean("sun", Star.class));
         System.out.println(app.getBean("sun"));

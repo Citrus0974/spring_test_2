@@ -1,8 +1,7 @@
 package edu.springtest2.beans.configs;
 
-import edu.springtest2.beans.Planet;
-import edu.springtest2.beans.Star;
-import org.springframework.beans.factory.annotation.Autowired;
+import edu.springtest2.entities.Planet;
+import edu.springtest2.entities.Star;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
