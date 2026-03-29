@@ -12,6 +12,10 @@ public class SolarSystem {
         this.planets = planets;
     }
 
+    public void solarWind(){
+        sun.wind();
+    }
+
     @Override
     public String toString() {
         return "SolarSystem{" +
