@@ -1,4 +1,4 @@
-package edu.springtest2.entities.university;
+package edu.springtest2.objects.university;
 
 public interface ActionUndo {
     public void undo();

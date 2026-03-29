@@ -1,4 +1,4 @@
-package edu.khityaev.annotations;
+package edu.springtest2.annotations;
 
 
 import java.lang.annotation.ElementType;

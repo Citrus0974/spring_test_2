@@ -1,4 +1,4 @@
-package edu.shevchenko.exam;
+package edu.springtest2.objects.traffic;
 
 public interface ColorChain {
     String get();

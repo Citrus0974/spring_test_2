@@ -1,4 +1,4 @@
-package edu.shevchenko.exam;
+package edu.springtest2.objects.traffic;
 
 public class TrafficLight {
     private ColorChain colors;

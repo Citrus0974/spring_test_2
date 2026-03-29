@@ -1,6 +1,7 @@
 package edu.springtest2.beans.configs;
 
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
@@ -18,12 +19,7 @@ public class FirstConfig {
         return "Hello world!";
     }
 
-    @Bean
-    @Scope("prototype")
-    int random(){
-        Random rnd = new Random();
-        return Math.abs(rnd.nextInt()%100);
-    }
+
 
     @Bean
     @Scope("singleton")
@@ -43,12 +39,14 @@ public class FirstConfig {
     }
 
     @Bean
+    @Qualifier("max")
     int max(){
-        return 100500;
+        return 5;
     }
 
     @Bean
+    @Qualifier("min")
     int min(){
-        return -100500;
+        return 1;
     }
 }

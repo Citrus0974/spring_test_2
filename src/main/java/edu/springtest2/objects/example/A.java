@@ -1,4 +1,4 @@
-package edu.springtest2.entities.example;
+package edu.springtest2.objects.example;
 
 import edu.springtest2.annotations.Cache;
 import edu.springtest2.annotations.ToString;

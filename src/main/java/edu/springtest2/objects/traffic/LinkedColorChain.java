@@ -1,4 +1,4 @@
-package edu.shevchenko.exam;
+package edu.springtest2.objects.traffic;
 
 public class LinkedColorChain implements ColorChain{
     private final Color first;

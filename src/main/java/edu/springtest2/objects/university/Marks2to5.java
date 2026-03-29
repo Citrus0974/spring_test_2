@@ -1,4 +1,4 @@
-package edu.springtest2.entities.university;
+package edu.springtest2.objects.university;
 
 public class Marks2to5  implements MarkCriteria{
     @Override

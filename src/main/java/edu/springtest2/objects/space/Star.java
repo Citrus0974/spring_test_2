@@ -1,4 +1,4 @@
-package edu.springtest2.entities.space;
+package edu.springtest2.objects.space;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
