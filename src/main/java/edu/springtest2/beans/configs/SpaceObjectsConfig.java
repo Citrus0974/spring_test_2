@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Scope;
 import java.util.Random;
 
 @Configuration
-public class Config {
+public class SpaceObjectsConfig {
     @Bean
     @Scope("prototype")
     public static Star sun(@Qualifier("random") int nextInt){

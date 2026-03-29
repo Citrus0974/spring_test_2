@@ -1,4 +1,4 @@
-package edu.springtest2;
+package edu.springtest2.main;
 
 
 import edu.springtest2.entities.SolarSystem;
