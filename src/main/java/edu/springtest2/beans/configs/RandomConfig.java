@@ -36,6 +36,7 @@ public class RandomConfig {
 
     @Bean
     @Scope("prototype")
+    @Qualifier("randomIntInRange")
     int random(@Qualifier("min") int min, @Qualifier("max") int max){
         if(min>max) throw new IllegalArgumentException("min value is greater than max value");
         int valuesCount=max-min+1;

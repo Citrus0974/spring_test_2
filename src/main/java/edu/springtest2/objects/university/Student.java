@@ -1,42 +1,31 @@
 package edu.springtest2.objects.university;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Predicate;
 
 public class Student {
     private String name = "";
     private List<Integer> marks = new ArrayList<>();
-    private final MarkCriteria criteria;
+    private Predicate<Integer> range;
     private List<ActionUndo> actions = new ArrayList<>();
 
-    public Student(String name, int...marks){
-        this(name, null, marks);
+    public Student(String name, Predicate<Integer> range, int...marks){
+        this.name = name;
+        this.range = range;
+        addMarks(marks);
     }
 
-    public Student(String name, MarkCriteria criteria, int...marks){
-        this.criteria=criteria;
-        this.name=name;
-        if(criteria==null){
-            for(Integer mark : marks){
-                this.addMark(mark);
-            }
-        } else{
-            for (int mark : marks) {
-                if (!criteria.isMarkCorrect(mark)) throw new WrongMarkException(this.name);
-            }
-            for(Integer mark : marks){
-                this.addMark(mark);
-            }
-        }
-    }
 
     public  Student(Student student){
         if(student==null) throw new NullPointerException("cannot copy null object");
         this.name = student.name;
         this.marks = student.marks;
-        this.criteria = student.criteria;
+        this.range = student.range;
     }
 
     public List<Integer> getMarks() {
@@ -44,26 +33,16 @@ public class Student {
     }
 
     public void addMark(int mark){
-        if(this.criteria==null){
-            marks.add(mark);
-            this.actions.add(()->this.marks.remove(mark));
-            return;
-        }
-        if (!criteria.isMarkCorrect(mark)) throw new WrongMarkException(this.name);
-        marks.add(mark);
+        if(range.test(mark)) marks.add(mark);
         this.actions.add(()->this.marks.removeLast());
      }
 
     public void addMarks(int...marks){
-        if(marks.length==1) throw new IllegalArgumentException("must be at least 1 mark");
         List<Integer> newMarks = new ArrayList<>();
         for(int i=0; i<marks.length; i++){
-            if(criteria==null){
+            if (range.test(marks[i])){
                 newMarks.add(marks[i]);
-            } else {
-                if (!criteria.isMarkCorrect(marks[i])) throw new WrongMarkException(this.name);
-                newMarks.add(marks[i]);
-            }
+            } else throw new WrongMarkException("mark " + marks[i] + " for student "   + name + " is not compatible");
         }
         this.marks.addAll(newMarks);
         this.actions.add(() -> {
@@ -75,7 +54,7 @@ public class Student {
 
     public void setMarks(List<Integer> marks) {
         for(Integer mark : marks){
-            if (!criteria.isMarkCorrect(mark)) throw new WrongMarkException(this.name);
+            if (!range.test(mark)) throw new WrongMarkException(this.name);
         }
         List OldMarks = this.marks;
         this.marks = marks;
@@ -117,15 +96,8 @@ public class Student {
 
     @Override
     public String toString() {
-        if (this.marks == null) return name;
-        if (!this.marks.isEmpty()) {
-            String out = name + ": [";
-            for (int i = 0; i < this.marks.size() - 1; i++) {
-                out += this.marks.get(i);
-                out += "; ";
-            }
-            return out + this.marks.getLast() + "]";
-        } else return name;
+        if (this.marks == null || this.marks.isEmpty()) return name;
+        return "name: " + name + "; marks: " + marks + "; range: " + range;
     }
 
     @Override
