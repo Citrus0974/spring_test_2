@@ -1,4 +1,4 @@
-package edu.springtest2.entities;
+package edu.springtest2.entities.space;
 
 public class Planet {
     private String name;
